@@ -49,3 +49,21 @@ outliers = df[
 
 print("Number of outliers:", len(outliers))
 
+##------EDA-------##
+
+#
+
+
+
+# Video Game Distribution by Genre
+genre_counts = df['Genre'].value_counts()
+plt.figure(figsize=(6,6))
+plt.pie(
+    genre_counts,
+    labels=genre_counts.index,
+    autopct='%1.1f%%',
+)
+
+plt.title('Video Game Distribution by Genre')
+plt.tight_layout()
+plt.show()
