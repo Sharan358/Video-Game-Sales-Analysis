@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 df = pd.read_csv('data/raw/vgsales.csv')
 
@@ -23,4 +25,27 @@ print(df.isnull().sum())
 print(df.info())
 
 df.to_csv('data/processed/vgsales_cleaned.csv', index=False)
+
+#Correlation and Covariance Analysis
+print("\nCorrelation:")
+print(df.corr(numeric_only=True))
+
+print("\nCovariance:")
+print(df.cov(numeric_only=True))
+
+print("Global Sales Skewness:", df['Global_Sales'].skew())
+
+print("Global Sales Kurtosis:", df['Global_Sales'].kurt())
+
+Q1 = df['Global_Sales'].quantile(0.25)
+Q3 = df['Global_Sales'].quantile(0.75)
+
+IQR = Q3 - Q1
+
+outliers = df[
+    (df['Global_Sales'] < Q1 - 1.5 * IQR) |
+    (df['Global_Sales'] > Q3 + 1.5 * IQR)
+]
+
+print("Number of outliers:", len(outliers))
 
