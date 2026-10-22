@@ -67,3 +67,62 @@ plt.pie(
 plt.title('Video Game Distribution by Genre')
 plt.tight_layout()
 plt.show()
+
+#
+plt.figure(figsize=(8, 4))
+
+sns.histplot(
+    df['Global_Sales'].dropna(),
+    bins=25,
+    kde=True,
+    color='purple',
+    edgecolor='black'
+)
+
+plt.title('Distribution of Global Video Game Sales')
+plt.xlabel('Global Sales (Millions)')
+plt.ylabel('Frequency')
+plt.show()
+
+
+# 
+plt.figure(figsize=(6, 4))
+
+sns.boxplot(
+    x=df['Global_Sales'],
+    color='skyblue'
+)
+
+plt.title('Boxplot of Global Video Game Sales')
+plt.xlabel('Global Sales (Millions)')
+plt.show()
+
+
+#
+plt.figure(figsize=(10, 7))
+corr = df.drop(columns='Rank').select_dtypes(include='number').corr()
+sns.heatmap(
+    corr,
+    annot=True,
+    cmap='coolwarm',
+    fmt='.2f',
+    linewidths=0.5
+)
+plt.title('Correlation Heatmap of Video Game Sales')
+plt.show()
+
+#
+year_sales = df.groupby('Year')['Global_Sales'].sum().reset_index()
+plt.figure(figsize=(9, 5))
+
+sns.scatterplot(
+    data=year_sales,
+    x='Year',
+    y='Global_Sales',
+    color='dodgerblue'
+)
+
+plt.title('Year vs Global Video Game Sales')
+plt.xlabel('Release Year')
+plt.ylabel('Global Sales (Millions)')
+plt.show()
