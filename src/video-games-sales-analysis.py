@@ -346,3 +346,37 @@ print("\nConfusion Matrix:")
 print(confusion_matrix(Y_test, y_pred1))
 print("\nClassification Report:")
 print(classification_report(Y_test, y_pred1, zero_division=0))
+
+# CLASSIFICATION MODEL - 2 : KNN
+# Create and train the KNN model
+model2 = KNeighborsClassifier(n_neighbors=5)
+model2.fit(X_train, Y_train)
+# Predict sales categories
+y_pred2 = model2.predict(X_test)
+# Evaluate the model
+print("\nEvaluation parameters for KNN model")
+print("Accuracy:", accuracy_score(Y_test, y_pred2))
+print("Precision:", precision_score(Y_test, y_pred2, average='macro', zero_division=0))
+print("Recall:", recall_score(Y_test, y_pred2, average='macro', zero_division=0))
+print("F1 Score:", f1_score(Y_test, y_pred2, average='macro', zero_division=0))
+print("\nConfusion Matrix:")
+print(confusion_matrix(Y_test, y_pred2))
+print("\nClassification Report:")
+print(classification_report(Y_test, y_pred2, zero_division=0))
+
+# CLASSIFICATION MODEL - 3 : Support Vector Machine
+# Create and train the Support Vector Machine
+model3 = SVC(class_weight='balanced')
+model3.fit(X_train, Y_train)
+# Predict sales categories
+y_pred3 = model3.predict(X_test)
+# Evaluate the model
+print("\nEvaluation parameters for Support Vector Machine")
+print("Accuracy:", accuracy_score(Y_test, y_pred3))
+print("Precision:", precision_score(Y_test, y_pred3, average='macro', zero_division=0))
+print("Recall:", recall_score(Y_test, y_pred3, average='macro', zero_division=0))
+print("F1 Score:", f1_score(Y_test, y_pred3, average='macro', zero_division=0))
+print("\nConfusion Matrix:")
+print(confusion_matrix(Y_test, y_pred3))
+print("\nClassification Report:")
+print(classification_report(Y_test, y_pred3, zero_division=0))
