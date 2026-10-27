@@ -380,3 +380,52 @@ print("\nConfusion Matrix:")
 print(confusion_matrix(Y_test, y_pred3))
 print("\nClassification Report:")
 print(classification_report(Y_test, y_pred3, zero_division=0))
+
+# CLASSIFICATION MODEL - 4 : Random Forest
+# Create and train the Random Forest model
+model4 = RandomForestClassifier(
+    n_estimators=300,
+    max_depth=15,
+    min_samples_leaf=5,
+    random_state=42,
+    class_weight='balanced'
+)
+model4.fit(X_train, Y_train)
+# Predict sales categories
+y_pred4 = model4.predict(X_test)
+# Evaluate the model
+print("\nEvaluation parameters for Random Forest model")
+print("Accuracy:", accuracy_score(Y_test, y_pred4))
+print("Precision:", precision_score(Y_test, y_pred4, average='macro', zero_division=0))
+print("Recall:", recall_score(Y_test, y_pred4, average='macro', zero_division=0))
+print("F1 Score:", f1_score(Y_test, y_pred4, average='macro', zero_division=0))
+print("\nConfusion Matrix:")
+print(confusion_matrix(Y_test, y_pred4))
+print("\nClassification Report:")
+print(classification_report(Y_test, y_pred4, zero_division=0))
+
+models = ['Logistic Regression', 'KNN', 'Support Vector Machine', 'Random Forest']
+
+print("\nMODEL 1: Logistic Regression")
+print("Accuracy:", accuracy_score(Y_test, y_pred1))
+print("Precision:", precision_score(Y_test, y_pred1, average='macro', zero_division=0))
+print("Recall:", recall_score(Y_test, y_pred1, average='macro', zero_division=0))
+print("F1 Score:", f1_score(Y_test, y_pred1, average='macro', zero_division=0))
+
+print("\nMODEL 2: KNN")
+print("Accuracy:", accuracy_score(Y_test, y_pred2))
+print("Precision:", precision_score(Y_test, y_pred2, average='macro', zero_division=0))
+print("Recall:", recall_score(Y_test, y_pred2, average='macro', zero_division=0))
+print("F1 Score:", f1_score(Y_test, y_pred2, average='macro', zero_division=0))
+
+print("\nMODEL 3: Support Vector Machine")
+print("Accuracy:", accuracy_score(Y_test, y_pred3))
+print("Precision:", precision_score(Y_test, y_pred3, average='macro', zero_division=0))
+print("Recall:", recall_score(Y_test, y_pred3, average='macro', zero_division=0))
+print("F1 Score:", f1_score(Y_test, y_pred3, average='macro', zero_division=0))
+
+print("\nMODEL 4: Random Forest")
+print("Accuracy:", accuracy_score(Y_test, y_pred4))
+print("Precision:", precision_score(Y_test, y_pred4, average='macro', zero_division=0))
+print("Recall:", recall_score(Y_test, y_pred4, average='macro', zero_division=0))
+print("F1 Score:", f1_score(Y_test, y_pred4, average='macro', zero_division=0))
