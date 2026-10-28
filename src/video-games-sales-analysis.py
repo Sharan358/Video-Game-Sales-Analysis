@@ -429,3 +429,44 @@ print("Accuracy:", accuracy_score(Y_test, y_pred4))
 print("Precision:", precision_score(Y_test, y_pred4, average='macro', zero_division=0))
 print("Recall:", recall_score(Y_test, y_pred4, average='macro', zero_division=0))
 print("F1 Score:", f1_score(Y_test, y_pred4, average='macro', zero_division=0))
+
+# Best fit model
+print("\nConcluding the best fit model")
+print(
+    "The Random Forest achieved the highest scores on all four measures: accuracy (71.72%), precision (71.72%), "
+    "recall (71.70%) and macro F1 (71.71%). KNN came second with an accuracy of 68.89% and macro F1 of 68.87%. "
+    "Logistic Regression (F1 57.23%) and Support Vector Machine (F1 52.74%) performed noticeably lower. "
+    "Since the Low and High classes are almost equal after the median split, accuracy and macro F1 agree, "
+    "so Random Forest is selected as the best-fit model."
+)
+
+# KEY FINDINGS
+print("\nKEY FINDINGS")
+print(
+    "1. Regional sales drive global sales: NA (0.94) and EU (0.90) have the strongest correlation, while Year is weak (-0.08). "
+    "2. PS2 (1255.6M), X360 (980.0M) and PS3 (957.8M) are the top platforms by global sales. "
+    "3. Action is both the most common genre (3316 games) and the top-selling genre (1751.2M, 19.6% of all sales), followed by Sports and Shooter. "
+    "4. North America contributes 49.2% of global sales, followed by Europe (27.3%), Japan (14.5%) and other regions (8.9%). "
+    "5. Nintendo (1786.6M), Electronic Arts (1110.3M) and Activision (727.5M) are the top publishers; Wii Sports (82.7M) is the best-selling game. "
+    "6. Sales are highly skewed (skewness 17.4) with 1893 outliers, so a few blockbuster games earn most of the sales. "
+    "7. Adding Publisher as a feature raised Random Forest accuracy from 65% to 72%."
+)
+
+# FINAL CONCLUSION
+print("\nFINAL CONCLUSION")
+print(
+    "Four models were used to classify video games into Low and High sales using Platform, Genre, Year and Publisher. "
+    "The Random Forest performed best overall with an accuracy and macro F1 score of about 71.7%, while KNN was second (68.9%). "
+    "The classes were split at the median global sales (0.17M) to keep them balanced. "
+    "Performance is moderate because only four features were used and many hit games behave as outliers."
+)
+
+print("\nRECOMMENDATIONS")
+print("1. Publishers should prioritise the Action, Sports and Shooter genres and the PS2, X360 and PS3 platforms, which have the highest sales.")
+print("2. North America and Europe account for over 76% of sales, so they should be the priority markets for launches.")
+print("3. Publisher reputation strongly affects sales, so partnering with established publishers like Nintendo, EA and Activision improves the chances of success.")
+print("4. Use the Random Forest model to predict whether a new game will have Low or High sales.")
+print("5. Add features such as game ratings, critic scores and marketing budget to improve results.")
+
+print("\nLIMITATION")
+print("The 271 missing release years were filled with the mode year (2009), which may inflate sales and game counts for that year. ""Also, the High and Low classes depend on the median cutoff of 0.17M.")
